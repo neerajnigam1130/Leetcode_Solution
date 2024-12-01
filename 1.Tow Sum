@@ -1,0 +1,24 @@
+// #1. Two Sum
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        // Step 1: Initialize necessary data structures
+        vector<int> ans;
+        map<int, int> seen;
+
+        // Step 2: Iterate through the array and use the map to find the pair
+        for (int i = 0; i < nums.size(); i++) {
+            // Check if the complement exists in the map
+            if (seen.find(target - nums[i]) != seen.end()) {
+                // If found, add both numbers to the result
+                ans.push_back(seen[target - nums[i]]);
+                ans.push_back(i);
+                break;
+            }
+            // Store the current element in the map with its index
+            seen[nums[i]] = i;
+        }
+
+        return ans;
+    }
+};
